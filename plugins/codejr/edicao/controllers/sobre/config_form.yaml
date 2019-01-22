@@ -1,0 +1,10 @@
+name: Sobre
+form: $/codejr/edicao/models/quem/fields.yaml
+modelClass: CodeJr\Edicao\Models\Quem
+defaultRedirect: codejr/edicao/sobre
+create:
+    redirect: 'codejr/edicao/sobre/update/:id'
+    redirectClose: codejr/edicao/sobre
+update:
+    redirect: codejr/edicao/sobre
+    redirectClose: codejr/edicao/sobre
