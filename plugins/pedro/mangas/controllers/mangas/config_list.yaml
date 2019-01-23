@@ -1,0 +1,12 @@
+list: $/pedro/mangas/models/manga/columns.yaml
+modelClass: Pedro\Mangas\Models\Manga
+title: Mangas
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+recordsPerPage: 20
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'
+recordUrl: 'pedro/mangas/mangas/update/:id'
