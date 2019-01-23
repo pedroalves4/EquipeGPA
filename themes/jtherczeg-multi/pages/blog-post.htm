@@ -1,0 +1,49 @@
+title = "Blog post"
+url = "/blog/:slug"
+is_hidden = 0
+
+[blogPost]
+slug = "{{ :slug }}"
+categoryPage = "blog/category"
+==
+{% set post = blogPost.post %}
+ <link href="{{ [
+            'assets/css/bootstrap.min.css',
+
+            'assets/css/layout_a.css',
+ 
+        ]|theme }}" rel="stylesheet">
+
+<div class="container BlogAmpliado">
+    <div class="row ">
+
+	<h3>{{ post.title }}</h3>
+		<div class="content">{{ post.content_html|raw }}</div>
+
+		
+
+		{% if post.featured_images.count %}
+		    <div class="featured-images text-center">
+		        {% for image in post.featured_images %}
+		            <p>
+		                <img
+		                    data-src="{{ image.filename }}"
+		                    src="{{ image.path }}"
+		                    alt="{{ image.description }}"
+		                    style="max-width: 100%" />
+		            </p>
+		        {% endfor %}
+		    </div>
+		{% endif %}
+
+		<p class="info postblofampliado">
+		    Postado
+		    {% if post.categories.count %} in
+		        {% for category in post.categories %}
+		            <a href="{{ category.url }}">{{ category.name }}</a>{% if not loop.last %}, {% endif %}
+		        {% endfor %}
+		    {% endif %}
+		    em {{ post.published_at|date('d/m/Y') }}
+		</p>
+	</div>
+</div>

@@ -1,0 +1,65 @@
+title = "blogGPA"
+url = "/bloggpa/:page"
+layout = "GPA-MANGA"
+is_hidden = 0
+
+[blogPosts]
+pageNumber = "{{ :page }}"
+postsPerPage = 2
+noPostsMessage = "No posts found"
+sortOrder = "published_at desc"
+categoryPage = "blog-post"
+postPage = "blog-post"
+==
+{% set posts = blogPosts.posts %}
+<br>
+<div class="section-header">
+    <h2 class="section-title text-center wow fadeInDown"> GPA Blog</h2>
+    <p class="text-center wow fadeInDown">Confira nossas postagens, cobrimos tudo sobre mangás com a intensão de se tornar o melhor nesse nicho<br> O GPA Mangás conta com uma equipe dedicada e sempre disposta a aprender, para aumentar a qualidade das informações do seu blog</p>
+</div>
+
+ <div class="container blogpost">
+    <div class="row col-sm-12">
+        <ul class="post-list">
+            {% for post in posts %}
+                <li class="blog_elemento">
+
+                    <h3><a href="{{ post.url }}?iframe=true&width=100%&height=100%" rel="prettyPhoto[iframes]">{{ post.title }}</a></h3>
+
+                    <p class="info">
+                        Postado
+                        {% if post.categories.count %} in {% endif %}
+                        {% for category in post.categories %}
+                            <a  href="{{ category.url }}">{{ category.name }}</a>{% if not loop.last %}, {% endif %}
+                        {% endfor %}
+                        em {{ post.published_at|date('d/m/Y') }}
+                    </p>
+
+                    <p class="excerpt">{{ html_limit(post.summary, 400)|raw }}</p>
+                </li>
+            {% else %}
+                <li class="no-data">{{ blogPosts.noPostsMessage}}</li>
+            {% endfor %}
+        </ul>
+    </div> 
+</div>  
+
+{% if posts.lastPage > 1 %}
+	<div class="pages_blog">
+	    <ul class="pagination">
+	        {% if posts.currentPage > 1 %}
+	            <li><a href="{{ this.page.baseFileName|page({ (blogPosts.pageParam): (posts.currentPage-1) }) }}">&larr; Prev</a></li>
+	        {% endif %}
+
+	        {% for page in posts.currentPage ..posts.currentPage+1 %}
+	            <li class="{{ posts.currentPage == page ? 'active' : null }}">
+	                <a href="{{ this.page.baseFileName|page({ (blogPosts.pageParam): page }) }}">{{ page }}</a>
+	            </li>
+	        {% endfor %}
+
+	        {% if posts.lastPage > posts.currentPage %}
+	            <li><a href="{{ this.page.baseFileName|page({ (blogPosts.pageParam): (posts.currentPage+1) }) }}">Next &rarr;</a></li>
+	        {% endif %}
+	    </ul>
+	</div>    
+{% endif %}
