@@ -1,0 +1,23 @@
+1.0.1:
+    - 'Initialize plugin.'
+1.0.2:
+    - 'Created table pedro_mangas_'
+    - builder_table_create_pedro_mangas_.php
+1.0.3:
+    - 'Created table pedro_mangas_categoria'
+    - builder_table_create_pedro_mangas_categoria.php
+1.0.4:
+    - 'Created table pedro_mangas_mangas_categoria'
+    - builder_table_create_pedro_mangas_mangas_categoria.php
+1.0.5:
+    - 'Updated table pedro_mangas_mangas_categoria'
+    - builder_table_update_pedro_mangas_mangas_categoria.php
+1.0.6:
+    - 'Updated table pedro_mangas_categoria'
+    - builder_table_update_pedro_mangas_categoria.php
+1.0.7:
+    - 'Updated table pedro_mangas_categoria'
+    - builder_table_update_pedro_mangas_categoria_2.php
+1.0.8:
+    - 'Updated table pedro_mangas_categoria'
+    - builder_table_update_pedro_mangas_categoria_3.php

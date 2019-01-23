@@ -1,0 +1,16 @@
+columns:
+    nome:
+        label: Nome
+        type: text
+        searchable: true
+        sortable: true
+    autor:
+        label: Autor
+        type: text
+        searchable: true
+        sortable: true
+    edicao:
+        label: Edição
+        type: text
+        searchable: true
+        sortable: true

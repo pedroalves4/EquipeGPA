@@ -1,0 +1,4 @@
+title: Mangas
+modelClass: Pedro\Mangas\Models\Manga
+toolbar:
+    buttons: reorder_toolbar

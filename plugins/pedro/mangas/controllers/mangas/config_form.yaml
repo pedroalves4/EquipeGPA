@@ -1,0 +1,10 @@
+name: Mangas
+form: $/pedro/mangas/models/manga/fields.yaml
+modelClass: Pedro\Mangas\Models\Manga
+defaultRedirect: pedro/mangas/mangas
+create:
+    redirect: 'pedro/mangas/mangas/update/:id'
+    redirectClose: pedro/mangas/mangas
+update:
+    redirect: pedro/mangas/mangas
+    redirectClose: pedro/mangas/mangas

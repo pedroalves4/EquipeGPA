@@ -1,0 +1,10 @@
+name: Categorias
+form: $/pedro/mangas/models/categoria/fields.yaml
+modelClass: Pedro\Mangas\Models\Categoria
+defaultRedirect: pedro/mangas/categorias
+create:
+    redirect: 'pedro/mangas/categorias/update/:id'
+    redirectClose: pedro/mangas/categorias
+update:
+    redirect: pedro/mangas/categorias
+    redirectClose: pedro/mangas/categorias

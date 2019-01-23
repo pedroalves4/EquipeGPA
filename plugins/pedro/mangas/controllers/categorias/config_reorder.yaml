@@ -1,0 +1,4 @@
+title: Categorias
+modelClass: Pedro\Mangas\Models\Categoria
+toolbar:
+    buttons: reorder_toolbar
