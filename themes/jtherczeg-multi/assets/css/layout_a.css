@@ -1,0 +1,156 @@
+
+/* GPA BLOG */
+
+.blogpost img{
+	width: 300px !important;
+	height: 300px !important;
+	float: left;
+    border: transparent thin solid;
+    padding: 5px;
+    margin: 0px 15px 15px 0px;
+    max-width: 186px;
+}
+
+.blogpost p{
+	 margin: 10px 15px 15px 10px;
+
+}
+
+.blogpost h3{
+	 margin: 10px 10px 10px 10px;
+
+}
+
+.blog_elemento{
+	display: inline-block !important;
+	border-width: 2px;
+	border-color:#DCDCDC; 
+	border-style:ridge;
+	margin-top: 10px;
+	border-radius: 6px;
+	margin-bottom: 30px;
+	margin-right: 10px;
+	margin-left:10px;
+	height: 400px;
+	width: 500px;
+	vertical-align: top !important;
+}
+
+.pages_blog{
+
+	text-align: center !important;
+	margin-top: 10px;
+}
+
+
+@media(max-width: 600px) {
+ 
+.blog_elemento{
+
+ 	display: inline-block !important;
+	
+	border-width: 2px;
+	border-color:#DCDCDC; 
+	border-style:ridge;
+	margin-top: 10px;
+	border-radius: 6px;
+	margin-bottom: 30px;
+	margin-right: 10px;
+	margin-left: -5% !important;
+	height: 100%;
+	width: 100%;
+	text-align: left !important;
+}
+
+}
+
+/* GPA BLOG AMPLIAÇÃO*/
+
+.BlogAmpliado img{
+	width: 300px !important;
+	height: 400px !important;
+	float: left;
+    border: transparent thin solid;
+    padding: 5px;
+    margin-right: 30px; !important;
+    margin-top: -10px; !important;
+   
+}
+
+.BlogAmpliado h3{
+
+	margin-top: 50px;
+	margin-bottom: 50px; 
+     text-align:center;
+
+}
+
+.postblofampliado {
+ margin-top: 50px;
+ text-align: right;
+}
+
+/* SLIDE HOME (GRANDAO)*/
+
+.caixaslider{
+	background-color: #ffffff;
+	padding: 0px 20px 20px 20px;
+
+}
+
+.caixaslider h2{
+	padding-top: 20px;
+}
+
+.caixaslider2{
+	background-color: #a0a0a0;
+	padding: 0px 20px 20px 20px;
+
+}
+
+.caixaslider2 h2{
+	padding-top: 20px;
+
+}
+
+.caixaslider2 p{
+	font-size: 20px !important;
+}
+
+.caixaslider2 i{
+	color: #84cbff;
+}
+
+.caixaslider2 span{
+	color: #84cbff !important;
+}
+
+.caixaslider3 p{
+	font-size: 18px !important;
+}
+
+.caixaslider4 h2{
+	padding-top: 20px;
+	color: #363636 !important;
+
+}
+
+.caixaslider4 p{
+  font-size: 20px !important;
+  color:#000;
+}
+
+.caixaslider4 h4{
+  color:#000;
+}
+
+/*HOME DESCRIÇÃO DA GPA*/
+
+.textoGPA{
+	text-align: center;
+	font-size: 17px;
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+/**/
