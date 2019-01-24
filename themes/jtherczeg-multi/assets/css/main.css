@@ -15,6 +15,10 @@ body {
   font-weight: 400;
   color: #64686d;
   line-height: 26px;
+  display:flex;
+	flex-direction: column;
+	justify-content: space-between;
+	min-height: 100vh;
 }
 h1,
 h2,
@@ -936,3 +940,47 @@ ul.nostyle i {
   box-shadow: none;
   -webkit-box-shadow: none;
 }
+
+/*************************************************** MOVIE-SINGLE ****************************************************************************/
+
+.mangasingle-2 {
+
+margin-top: 7vh;
+
+}
+
+.mangasingle-2 h3, h2 {
+
+ font-weight: 200;
+  
+}
+
+.mangasingle-2 h4 {
+
+  font-weight: 150;
+   
+ }
+
+.mangasingle-1 {
+
+margin-bottom: 12px;
+}
+
+.manga_name{
+  font-weight: 250;
+  padding-bottom: 18px;
+}
+.descricao_manga {
+
+  line-height: 22px;
+}
+
+.foto_manga {
+
+  border: 1px;
+  border-style: groove;
+  border-color: black;
+  border-radius: 2px;
+}
+
+

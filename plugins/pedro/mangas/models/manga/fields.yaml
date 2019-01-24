@@ -1,0 +1,43 @@
+fields:
+    nome:
+        label: Nome
+        span: auto
+        type: text
+    autor:
+        label: Autor
+        span: auto
+        type: text
+    descricao:
+        label: Descrição
+        size: ''
+        span: auto
+        type: richeditor
+    slug:
+        label: Slug
+        span: auto
+        hidden: 0
+        preset:
+            field: edicao
+            type: slug
+        type: text
+    capa:
+        label: Capa
+        mode: image
+        imageWidth: '100'
+        imageHeight: '100'
+        useCaption: true
+        thumbOptions:
+            mode: crop
+            extension: auto
+        span: auto
+        type: fileupload
+    edicao:
+        label: Edição
+        span: auto
+        type: text
+    categories:
+        label: Categoria
+        span: auto
+        nameFrom: nome_cat
+        descriptionFrom: description
+        type: relation

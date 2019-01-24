@@ -1,0 +1,51 @@
+title = "mangas-single"
+url = "/manga/:slug"
+layout = "pagina_mangas"
+is_hidden = 0
+
+[builderDetails]
+modelClass = "Pedro\Mangas\Models\Manga"
+identifierValue = "{{ :slug }}"
+modelKeyColumn = "slug"
+displayColumn = "edicao"
+notFoundMessage = "Record not found"
+==
+{% set record = builderDetails.record %}
+{% set displayColumn = builderDetails.displayColumn %}
+{% set notFoundMessage = builderDetails.notFoundMessage %}
+
+
+<div class="container">
+    
+     <div class="col-lg-6 mangasingle-1">
+        {% if record %}
+        <h1 class="manga_name">
+            {{ attribute(record, displayColumn) }}
+            {% else %}
+            {{ notFoundMessage }}
+            {% endif %}
+        </h3>
+
+            <a href="{{ record.capa.path}}">
+                <img class="foto_manga" src="{{ record.capa.thumb(200,500) }}">
+            </a>
+    </div>
+
+    <div class="col-lg-6 mangasingle-2">
+
+        <h2>Autor: {{ record.autor }}</h2>
+        <hr> 
+            <h3>Descrição:</h3>
+            <h4 class="descricao_manga">{{ record.descricao|raw }}</h4>
+        
+        <h3>Categorias: </h3>
+
+        {% for genre in record.categories %} <!-- record. pega o Field name -->
+    
+        <a href="{{ 'genre'|page({ slug: genre.nome_cat  }) }}">{{ genre.nome_cat }}</a><br>
+    
+        {% endfor %}
+      
+    </div>
+ </div>
+</div>

@@ -1,0 +1,16 @@
+plugin:
+    name: 'pedro.mangas::lang.plugin.name'
+    description: 'pedro.mangas::lang.plugin.description'
+    author: Pedro
+    icon: oc-icon-book
+    homepage: ''
+navigation:
+    main-menu-item:
+        label: Manga
+        url: pedro/mangas/mangas
+        icon: icon-book
+        sideMenu:
+            side-menu-item:
+                label: Categoria
+                url: pedro/mangas/categorias
+                icon: icon-tag
