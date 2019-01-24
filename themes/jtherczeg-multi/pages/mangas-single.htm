@@ -16,7 +16,7 @@ notFoundMessage = "Record not found"
 
 
 <div class="container">
-    <div class="row">
+    
      <div class="col-lg-6 mangasingle-1">
         {% if record %}
         <h1 class="manga_name">
@@ -37,6 +37,14 @@ notFoundMessage = "Record not found"
         <hr> 
             <h3>Descrição:</h3>
             <h4 class="descricao_manga">{{ record.descricao|raw }}</h4>
+        
+        <h3>Categorias: </h3>
+
+        {% for genre in record.categories %} <!-- record. pega o Field name -->
+    
+        <a href="{{ 'genre'|page({ slug: genre.nome_cat  }) }}">{{ genre.nome_cat }}</a><br>
+    
+        {% endfor %}
       
     </div>
  </div>
