@@ -1,0 +1,11 @@
+tabs:
+    fields:
+        check_offer_active:
+            tab: lovata.toolbox::lang.tab.settings
+            span: left
+            label: lovata.shopaholic::lang.field.check_offer_active
+            type: checkbox
+        currency:
+            tab: lovata.toolbox::lang.tab.prices_format
+            span: left
+            label: lovata.shopaholic::lang.field.currency
