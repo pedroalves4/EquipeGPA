@@ -1,87 +1,107 @@
+[blogPosts]
+noPostsMessage = "No posts found"
+sortOrder = "published_at desc"
+categoryPage = "blog-post"
+postPage = "blog-post"
+==
+ {% set post = blogPosts.posts%}
 <div class="container">
             <div class="section-header">
-                <h2 class="section-title text-center wow fadeInDown">Latest Blogs</h2>
-                <p class="text-center wow fadeInDown">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut <br> et dolore magna aliqua. Ut enim ad minim veniam</p>
+                <h2 class="section-title text-center wow fadeInDown">GPA Blog</h2>
+                <p class="text-center wow fadeInDown">Confira nossas postagens, cobrimos tudo sobre mangás com a intensão de se tornar o melhor nesse nicho<br>
+                O GPA Mangás conta com uma equipe dedicada e sempre disposta a aprender, para aumentar a qualidade das informações do seu blog</p>
             </div>
 
+            
             <div class="row">
-                <div class="col-sm-6">
-                    <div class="blog-post blog-large wow fadeInLeft" data-wow-duration="300ms" data-wow-delay="0ms">
-                        <article>
-                            <header class="entry-header">
-                                <div class="entry-thumbnail">
-                                    <img class="img-responsive" src="{{ 'assets/images/blog/01.jpg'|theme }}" alt="">
-                                    <span class="post-format post-format-video"><i class="fa fa-film"></i></span>
-                                </div>
-                                <div class="entry-date">25 November 2014</div>
-                                <h2 class="entry-title"><a href="#">While now the fated Pequod had been so long afloat this</a></h2>
-                            </header>
 
-                            <div class="entry-content">
-                                <P>With a blow from the top-maul Ahab knocked off the steel head of the lance, and then handing to the mate the long iron rod remaining, bade him hold it upright, without its touching off the steel head of the lance, and then handing to the mate the long iron rod remaining. without its touching off the steel without its touching off the steel</P>
-                                <a class="btn btn-primary" href="#">Read More</a>
-                            </div>
-
-                            <footer class="entry-meta">
-                                <span class="entry-author"><i class="fa fa-pencil"></i> <a href="#">Victor</a></span>
-                                <span class="entry-category"><i class="fa fa-folder-o"></i> <a href="#">Tutorial</a></span>
-                                <span class="entry-comments"><i class="fa fa-comments-o"></i> <a href="#">15</a></span>
-                            </footer>
-                        </article>
-                    </div>
-                </div><!--/.col-sm-6-->
                 <div class="col-sm-6">
-                    <div class="blog-post blog-media wow fadeInRight" data-wow-duration="300ms" data-wow-delay="100ms">
-                        <article class="media clearfix">
-                            <div class="entry-thumbnail pull-left">
-                                <img class="img-responsive" src="{{ 'assets/images/blog/02.jpg'|theme }}" alt="">
-                                <span class="post-format post-format-gallery"><i class="fa fa-image"></i></span>
-                            </div>
-                            <div class="media-body">
+                   {% for post in posts | slice(0,1) %} 
+                        <div class="blog-post blog-large wow fadeInLeft" data-wow-duration="300ms" data-wow-delay="0ms">
+                            <article>
                                 <header class="entry-header">
-                                    <div class="entry-date">01 December 2014</div>
-                                    <h2 class="entry-title"><a href="#">BeReviews was a awesome envent in dhaka</a></h2>
+                                    <div class="entry-thumbnail imagem-thumb-superior">
+
+                                        <img class="img-responsive" src="{{post.featured_images|first.path}}" alt="">
+                                      
+                                    </div>
+                                    <div class="entry-date">{{ post.published_at|date('d/m/Y') }}</div>
+                                    <h2 class="entry-title">{{post.title}}</h2>
                                 </header>
 
                                 <div class="entry-content">
-                                    <P>With a blow from the top-maul Ahab knocked off the steel head of the lance, and then handing to the steel</P>
-                                    <a class="btn btn-primary" href="#">Read More</a>
+                                    <p>{{ html_limit(post.excerpt, 100)|raw }}</p>
+                                    <a class="btn btn-primary" href="{{ post.url }}" target="_blank">Leia Mais</a>
                                 </div>
 
                                 <footer class="entry-meta">
-                                    <span class="entry-author"><i class="fa fa-pencil"></i> <a href="#">Campbell</a></span>
-                                    <span class="entry-category"><i class="fa fa-folder-o"></i> <a href="#">Tutorial</a></span>
-                                    <span class="entry-comments"><i class="fa fa-comments-o"></i> <a href="#">15</a></span>
-                                </footer>
-                            </div>
-                        </article>
-                    </div>
-                    <div class="blog-post blog-media wow fadeInRight" data-wow-duration="300ms" data-wow-delay="200ms">
-                        <article class="media clearfix">
-                            <div class="entry-thumbnail pull-left">
-                                <img class="img-responsive" src="{{ 'assets/images/blog/03.jpg'|theme }}" alt="">
-                                <span class="post-format post-format-audio"><i class="fa fa-music"></i></span>
-                            </div>
-                            <div class="media-body">
-                                <header class="entry-header">
-                                    <div class="entry-date">03 November 2014</div>
-                                    <h2 class="entry-title"><a href="#">Play list of old bangle  music and gajal</a></h2>
-                                </header>
+                                    
+                                    <span class="entry-category"><i class="fa fa-folder-o"></i> <a href="#">
+                                        
+                                        {% if post.categories.count %}
+                                            {% for category in post.categories %}
+                                                <a href="/gpa/EquipeGPA/post-categoria/{{ category.name }}">{{ category.name }}</a>{% if not loop.last %}, {% endif %}
+                                            {% endfor %}
+                                        {% endif %}
 
-                                <div class="entry-content">
-                                    <P>With a blow from the top-maul Ahab knocked off the steel head of the lance, and then handing to the steel</P>
-                                    <a class="btn btn-primary" href="#">Read More</a>
-                                </div>
+                                    </a></span>
 
-                                <footer class="entry-meta">
-                                    <span class="entry-author"><i class="fa fa-pencil"></i> <a href="#">Ruth</a></span>
-                                    <span class="entry-category"><i class="fa fa-folder-o"></i> <a href="#">Tutorial</a></span>
-                                    <span class="entry-comments"><i class="fa fa-comments-o"></i> <a href="#">15</a></span>
+                                    
                                 </footer>
-                            </div>
-                        </article>
-                    </div>
+                            </article>
+                        </div>
+                    {% endfor %}   
                 </div>
-            </div>
+                
+                <div class="col-sm-6">
+                    {% for post in posts| slice(1,2) %}
+                        <div class="blog-post blog-media wow fadeInRight" data-wow-duration="300ms" data-wow-delay="100ms">
+                            <article class="media clearfix">
 
-        </div>
+                                <div class="entry-thumbnail pull-left">
+                                    
+                                    <div class="cp-thumb imagem-thumb-lateral ">
+                                        <img src="{{post.featured_images|first.path}}" alt="">
+                                    </div>
+
+                                </div>
+
+                                <div class="media-body">
+                                    <header class="entry-header">
+                                        <div class="entry-date">{{ post.published_at|date('d/m/Y') }}</div>
+                                        <h2 class="entry-title">{{post.title}}</h2>
+                                    </header>
+
+                                    <div class="entry-content ">
+                                        <p>{{ html_limit(post.excerpt, 100)|raw }}</p>
+                                        <a class="btn btn-primary" href="{{ post.url }}" target="_blank">Leia Mais</a>
+                                    </div>
+
+                                    <footer class="entry-meta">
+
+                                        <span class="entry-category"><i class="fa fa-folder-o"></i>
+
+                                            {% if post.categories.count %}
+                                                {% for category in post.categories %}
+                                                    <a href="/gpa/EquipeGPA/post-categoria/{{ category.name }}">{{ category.name }}</a>{% if not loop.last %}, {% endif %}
+                                                {% endfor %}
+                                            {% endif %}
+
+                                        </span>
+
+                                    </footer>
+                                </div>
+                            </article>
+                        </div>
+                    {% endfor %} 
+                </div>
+
+            <div class=" col-md-12 btn-mais-post">
+
+                <a class="btn btn-primary " href="bloggpa/:1" target="_blank">Veja Mais Postagens</a>
+
+            </div>
+              
+               
+            </div>
+</div>            

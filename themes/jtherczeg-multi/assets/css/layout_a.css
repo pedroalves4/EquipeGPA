@@ -1,92 +1,103 @@
-/* GPA BLOG */
+/*BLOG GPA*/
 
-.blogpost img{
-	width: 300px !important;
-	height: 300px !important;
-	float: left;
-    border: transparent thin solid;
-    padding: 5px;
-    margin: 0px 15px 15px 0px;
-    max-width: 186px;
+.imagem-thumb-lateral img{
+	max-height: 300px !important;
+	min-height: 300px !important;
+	max-width: 260px !important;
+	min-width: 260px !important;
 }
 
-.blogpost p{
-	 margin: 10px 15px 15px 10px;
+.imagem-thumb-superior img{
+	max-height: 380px !important;
+	min-height: 380px !important;
+	max-width: 554px !important;
+	min-width: 554px !important;
+}
+
+.btn-mais-post{
+	margin-top: 50px;
+	text-align: center !important;
 
 }
 
-.blogpost h3{
-	 margin: 10px 10px 10px 10px;
+.coluna-canto-post{
+	margin-top: 30px;
+}
+
+.barra-pesquisa-blogpa{
+	margin-bottom: 30px;
+}
+
+.list-posts-gpa-right h4{
+	margin-top: 30px;
+	margin-left: 10px;
+}
+
+
+.categoria-blogpa li {
+  list-style-type: none;
+  position:relative;
+  margin-bottom:0.5em;
+  margin-bottom: 8px;
+  font-size: 17px !important;	
+}
+
+.categoria-blogpa li:before {
+  content: '•';
+  display: inline-block;
+  position: absolute;
+  left: -1em;
+  color:#808080;
+}
+
+.categoria-blogpa a:hover{
+	text-decoration:none;
+	color:#808080;
+}
+
+.categoria-blogpa li.active>a{
+	text-decoration:none;
+	color:#808080;
+}
+
+.categoria-blogpa span{
+	margin-left: 5px;	
+}
+
+
+/* BLOG PAG DE POSTS*/
+
+.texto-post-list {
+	margin-top: 15px;
+}
+
+.texto-post-list button{
+	margin-top: 20px !important;
+}
+
+.espaco-post{
+	margin-left: 20px !important;
+	margin-right: 20px !important;
 
 }
 
-.blog_elemento{
-	display: inline-block !important;
-	border-width: 2px;
-	border-color:#DCDCDC; 
-	border-style:ridge;
+.data-post{
 	margin-top: 10px;
-	border-radius: 6px;
+}
+
+.paginas-list-post{
+	text-align: center;
+}
+
+.bordas-list-post{
+	border-width: 1px;
+	border-style:ridge;
+	margin-top: 30px;
 	margin-bottom: 30px;
 	margin-right: 10px;
 	margin-left:10px;
-	height: 400px;
-	width: 500px;
-	vertical-align: top !important;
-}
-
-.pages_blog{
-
-	text-align: center !important;
-	margin-top: 10px;
-}
-
-
-@media(max-width: 600px) {
- 
-.blog_elemento{
-
- 	display: inline-block !important;
-	
-	border-width: 2px;
-	border-color:#DCDCDC; 
-	border-style:ridge;
-	margin-top: 10px;
-	border-radius: 6px;
-	margin-bottom: 30px;
-	margin-right: 10px;
-	margin-left: -5% !important;
 	height: 100%;
 	width: 100%;
-	text-align: left !important;
-}
-
-}
-
-/* GPA BLOG AMPLIAÇÃO*/
-
-.BlogAmpliado img{
-	width: 300px !important;
-	height: 400px !important;
-	float: left;
-    border: transparent thin solid;
-    padding: 5px;
-    margin-right: 30px; !important;
-    margin-top: -10px; !important;
-   
-}
-
-.BlogAmpliado h3{
-
-	margin-top: 50px;
-	margin-bottom: 50px; 
-     text-align:center;
-
-}
-
-.postblofampliado {
- margin-top: 50px;
- text-align: right;
 }
 
 /* SLIDE HOME (GRANDAO)*/
@@ -152,4 +163,110 @@
 	margin-right: 20px;
 }
 
-/**/
+/*BLOG POST COMENTARIOS. list.htm */
+
+.comentarios-blog-post {
+	text-align: left;
+	margin-bottom: 30px;
+}
+
+.comments ul {
+    list-style: none;
+}
+
+.comments ul:first-child {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+.comment {
+    padding: 0.5em 0;
+}
+
+.comment .comment-avatar, .comment-content {
+    float: left;
+}
+
+.comment-avatar {
+    width: 65px;
+    height: 65px;
+}
+
+.comment-content {
+    margin-left: 15px;
+}
+
+#comment-text {
+    height: 100px;
+}
+
+.comment-avatar img {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+}
+
+.comment-name {
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.comment-date {
+    margin-left: 10px;
+}
+
+.comment-date, .comment-reply {
+    font-size: 13px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#cancel-comment-reply-link {
+    cursor: pointer;
+}
+
+.comment-date:hover, .comment-reply:hover {
+    text-decoration: none;
+}
+
+.comment-reply-title {
+    border-top: 4px solid #1a1a1a;
+    margin-bottom: 25px;
+    font-size: 25px;
+    margin-top: 25px;
+    padding-top: 25px;
+}
+
+.comment-reply-title small a {
+    border: 0;
+    float: right;
+    font-size: 30px;
+    text-decoration: none;
+}
+
+.comment-reply {
+
+}
+
+.alinhamento-texto h4{
+	text-align: left !important;
+	margin-bottom: 50px;
+}
+
+.post-blog-header{
+
+	margin-top: 12px;
+	margin-bottom: 25px;
+}
+
+.titulo-post h1{
+	text-align: center;
+}
+
+@media(max-width: 600px) {
+	.versao-mobile{
+		margin-left: 10px;
+		margin-right: 10px;
+	}
+}	

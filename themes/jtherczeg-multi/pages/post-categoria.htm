@@ -1,15 +1,16 @@
-title = "blogGPA"
-url = "/bloggpa/:page"
+title = "post-categoria"
+url = "/post-categoria/:slug/"
 layout = "GPA-MANGA"
 is_hidden = 0
 
 [blogPosts]
 pageNumber = "{{ :page }}"
-postsPerPage = 15
+categoryFilter = "{{ :slug }}"
+postsPerPage = 10
 noPostsMessage = "No posts found"
 sortOrder = "published_at desc"
-categoryPage = "blog-post"
-postPage = "blog-post"
+categoryPage = "add-manga"
+postPage = "add-manga"
 
 [blogCategories]
 slug = "{{ :slug }}"
@@ -21,7 +22,7 @@ resultPage = "blog-resultado-pesquisa"
 categoryFilter = 0
 ==
 {% set posts = blogPosts.posts %}
-<br>
+
 <div class="section-header">
     <h2 class="section-title text-center wow fadeInDown"> GPA Blog</h2>
     <p class="text-center wow fadeInDown">Confira nossas postagens, cobrimos tudo sobre mangás com a intensão de se tornar o melhor nesse nicho<br> O GPA Mangás conta com uma equipe dedicada e sempre disposta a aprender, para aumentar a qualidade das informações do seu blog</p>
@@ -31,31 +32,29 @@ categoryFilter = 0
     <div class="row">
 
         <div class=" col-sm-3 coluna-canto-post">
-             
+            
             <form class="form-inline barra-pesquisa-blogpa" method="GET" action="{{ searchForm.resultPage|page }}">
-                <input type="text" name="search" class="form-control" placeholder="bucar em todos os posts">
+			    <input type="text" name="search" class="form-control" placeholder="bucar em todos os posts">
 
-                {% if searchForm.categoryFilter %}
-                    <select name="cat[]" class="form-control">
-                    {% for key,cat in searchForm.categories %}
-                        <option value="{{ key }}">{{ cat }}</option>
-                    {% endfor %}
-                    </select>
-                {% endif %}
+			    {% if searchForm.categoryFilter %}
+			        <select name="cat[]" class="form-control">
+			        {% for key,cat in searchForm.categories %}
+			            <option value="{{ key }}">{{ cat }}</option>
+			        {% endfor %}
+			        </select>
+			    {% endif %}
 
-                <button class="btn btn btn-primary" type="submit">{{ 'Search'|_ }}</button>
-            </form>
-
+			    <button class="btn btn btn-primary" type="submit" >{{ 'Search'|_ }}</button>
+			</form>
         
             {% if blogCategories.categories|length > 0 %}
           
                 <ul class="category-list categoria-blogpa">
-                   
-                    <i> {% partial blogCategories ~ "::items"
+                   <i> <a href="/gpa/EquipeGPA/bloggpa/:1"><li>Exibir todas as postagens</li></a>
+                    {% partial blogCategories ~ "::items"
                         categories = blogCategories.categories
-                        currentCategorySlug = blogCategories.currentCategorySlug%}
-                    </i>
-
+                        currentCategorySlug = blogCategories.currentCategorySlug
+                    %}</i>
                 </ul>
           
             {% else %}
@@ -65,7 +64,8 @@ categoryFilter = 0
 
         </div>
 
-        <div class=" col-sm-9">
+        <div class=" col-sm-9 list-posts-gpa-right">
+        	<h4>Postagens na categoria {{ category.name }}</h4>
                 {% for post in posts %}
                    <div class="blog-post blog-media wow fadeInRight bordas-list-post" data-wow-duration="300ms" data-wow-delay="100ms">
                             <article class="media clearfix">

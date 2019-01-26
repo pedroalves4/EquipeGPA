@@ -1,27 +1,24 @@
-title = "blogGPA"
-url = "/bloggpa/:page"
+title = "blog resultado pesquisa"
+url = "/blog-result/:page/:search"
 layout = "GPA-MANGA"
 is_hidden = 0
-
-[blogPosts]
-pageNumber = "{{ :page }}"
-postsPerPage = 15
-noPostsMessage = "No posts found"
-sortOrder = "published_at desc"
-categoryPage = "blog-post"
-postPage = "blog-post"
 
 [blogCategories]
 slug = "{{ :slug }}"
 displayEmpty = "{{ não há categorias }}"
 categoryPage = "post-categoria"
 
-[searchForm]
-resultPage = "blog-resultado-pesquisa"
-categoryFilter = 0
+[searchResult]
+searchTerm = "{{ :search }}"
+pageNumber = "{{ :page }}"
+postsPerPage = 20
+noPostsMessage = "No posts found"
+sortOrder = "published_at desc"
+categoryPage = "blog/category"
+postPage = "blog/post"
 ==
-{% set posts = blogPosts.posts %}
-<br>
+{% set posts = searchResult.posts %}
+
 <div class="section-header">
     <h2 class="section-title text-center wow fadeInDown"> GPA Blog</h2>
     <p class="text-center wow fadeInDown">Confira nossas postagens, cobrimos tudo sobre mangás com a intensão de se tornar o melhor nesse nicho<br> O GPA Mangás conta com uma equipe dedicada e sempre disposta a aprender, para aumentar a qualidade das informações do seu blog</p>
@@ -50,7 +47,7 @@ categoryFilter = 0
             {% if blogCategories.categories|length > 0 %}
           
                 <ul class="category-list categoria-blogpa">
-                   
+                   <i> <a href="/gpa/EquipeGPA/bloggpa/:1"><li>Exibir todas as postagens</li></a>
                     <i> {% partial blogCategories ~ "::items"
                         categories = blogCategories.categories
                         currentCategorySlug = blogCategories.currentCategorySlug%}
@@ -65,8 +62,11 @@ categoryFilter = 0
 
         </div>
 
-        <div class=" col-sm-9">
-                {% for post in posts %}
+        <div class=" col-sm-9 list-posts-gpa-right">
+
+			<h4>{{ 'Resultados para:'|_ }} {{ searchResult.searchTerm }}</h4>
+
+			    {% for post in posts %}
                    <div class="blog-post blog-media wow fadeInRight bordas-list-post" data-wow-duration="300ms" data-wow-delay="100ms">
                             <article class="media clearfix">
 
@@ -108,23 +108,10 @@ categoryFilter = 0
                         </div>
                         
                 {% else %}
-                    <li class="no-data">{{ blogPosts.noPostsMessage}}</li>
+                    <li class="no-data">{{ noPostsMessage }}</li>
                 {% endfor %}
         </div> 
     </div>  
-</div>
-
-
-{% if posts.lastPage > 1 %}
-    <div class="paginas-list-post">
-        <ul class="pagination ">
-            {% if posts.currentPage > 1 %}
-                <li><a href="{{ this.page.baseFileName|page({ (blogPosts.pageParam): (posts.currentPage-1) }) }}">&larr; Prev</a></li>
-            {% endif %}
-
-            {% if posts.lastPage > posts.currentPage %}
-                <li><a href="{{ this.page.baseFileName|page({ (blogPosts.pageParam): (posts.currentPage+1) }) }}">Next &rarr;</a></li>
-            {% endif %}
-        </ul>
-    </div>    
-{% endif %}
+</div>	
+</div>	
+{% partial searchResult~"::pagination" posts=posts %}
