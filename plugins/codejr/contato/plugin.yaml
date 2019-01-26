@@ -1,0 +1,6 @@
+plugin:
+    name: 'codejr.contato::lang.plugin.name'
+    description: 'codejr.contato::lang.plugin.description'
+    author: 'Code Jr'
+    icon: oc-icon-envelope
+    homepage: ''
