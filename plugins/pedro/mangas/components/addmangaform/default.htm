@@ -1,0 +1,48 @@
+{% set categorias = addmangaform.categorias %}
+
+<form data-request="onSubmit" data-request-files data-request-flash>
+
+  <input type="hidden" name="_handler" value="onSave">
+    {{ form_token() }}
+    {{ form_sessionKey() }}
+
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Titulo</label>
+    <input type="text" name="nome" class="form-control" id="exampleFormControlInput1" >
+  </div>
+
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Autor</label>
+    <input type="text" name="autor" class="form-control" id="exampleFormControlInput1" >
+  </div>
+
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Edição</label>
+    <input type="number"  min="1" name="edicao" class="form-control" id="exampleFormControlInput1">
+  </div>
+
+  <div class="form-check form-check-inline">
+
+    <label for="categoria">Selecione as categorias</label><br>
+
+    {% for categoria in categorias %}
+      <input class="form-check-input" type="checkbox" name="generos[]" id="inlineCheckbox1" value="{{categoria.id}}">
+      <label class="form-check-label">{{ categoria.nome_cat }} |</label>
+    {% endfor %}  
+
+  </div>
+
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">Descrição</label>
+    <textarea class="form-control" name="descricao" id="exampleFormControlTextarea1" rows="3"></textarea>
+  </div>
+  
+  
+  <label>Capa</label>
+  <input type="file" name="capa" accept="image/*" data-request="onImageUpload" data-request-files data-request-flash>
+
+  <div id="imageResult">Imagem não disponível!</div><br>
+
+  <button type="submit" class="btn btn-primary">Salvar</button>
+
+</form>

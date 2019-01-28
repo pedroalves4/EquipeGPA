@@ -38,4 +38,5 @@ class Manga extends Model
             'otherKey' => 'categoria_id'
         ]
     ];
+
 }

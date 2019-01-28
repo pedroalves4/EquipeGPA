@@ -1,15 +1,15 @@
 {% if canRegister %}
-    <h3>Register</h3>
+    <h3>Registrar novo usuário</h3><br>
     <form
         data-request="onRegister">
         <div class="form-group">
-            <label for="registerName">Full Name</label>
+            <label for="registerName">Nome Completo</label>
             <input
                 name="name"
                 type="text"
                 class="form-control"
                 id="registerName"
-                placeholder="Enter your full name" />
+                placeholder="Entre com o nome completo" />
         </div>
 
         <div class="form-group">
@@ -19,32 +19,32 @@
                 type="email"
                 class="form-control"
                 id="registerEmail"
-                placeholder="Enter your email" />
+                placeholder="Digite o email" />
         </div>
 
         {% if loginAttribute == "username" %}
             <div class="form-group">
-                <label for="registerUsername">Username</label>
+                <label for="registerUsername">Nome de usuário</label>
                 <input
                     name="username"
                     type="text"
                     class="form-control"
                     id="registerUsername"
-                    placeholder="Enter your username" />
+                    placeholder="Digite o nome do usuário" />
             </div>
         {% endif %}
 
         <div class="form-group">
-            <label for="registerPassword">Password</label>
+            <label for="registerPassword">Senha</label>
             <input
                 name="password"
                 type="password"
                 class="form-control"
                 id="registerPassword"
-                placeholder="Choose a password" />
+                placeholder="Escolha uma password" />
         </div>
 
-        <button type="submit" class="btn btn-default">Register</button>
+        <button type="submit" class="btn btn-default">Registrar</button>
     </form>
 {% else %}
     <!-- Registration is disabled. -->
