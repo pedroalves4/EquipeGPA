@@ -1,72 +1,45 @@
-
 {% set nome = filtermanga.nome %}
 {% set categories = filtermanga.categories %}
 {% set detailsPage2 = builderList.detailsPage %}
 {% set detailsKeyColumn2 = builderList.detailsKeyColumn %}
 {% set detailsUrlParameter2 = builderList.detailsUrlParameter %}
 
+<div class="container-fluid pagina_produtos">
 
-<div class="container-fluid pagina_produtos" id="portfolio"">
-
-<div class="row">
-
-<div class="col-lg-3">
-
-<form class="genre" method="GET" action="{{ url('manga_cat') }}" >
-    <div>      
-        <label>Categorias</label>
-        <select class="form-control portfolio-filter" name="categories">
-            <option value="">Escolha uma categoria</option>
-            {% for genre in categories %}
-                <option value="{{genre.slug}}" data-filter=".{{ genre.nome_cat }}">{{ genre.nome_cat }}</option>
-            {% endfor %}
-            <hr>
-        </select>
-    </div>
-    <button type="submit" type="button" class="btn btn-primary btn-lg"> Pesquisar</button>
-</form>
-</div>
-
-
-
-        <div class="col-lg-9 flex-container">
-            {% for record in nome %}
-           <div class="portfolio-items {{ record.nome_cat }}">
-            <a href="{{ detailsPage2|page({ (detailsUrlParameter2): attribute(record, detailsKeyColumn2) }) }}">
-          <div class="thumbnail portfolio-info">
-            <img src="{{ record.capa.thumb(150,170, {'mode':'crop'}) }}" alt="...">
-            <div class="caption">
-              <h3>{{ record.edicao }}</h3>
-              <h4>{{ record.autor }}</h4>
-            </div>
-          </div>
-          </a>
-          {% endfor %}
-          </div>
+    <div class="row">
+        
+        <div class="col-lg-2">
+        
+                <form class="genre" method="GET" action="{{ url('manga_cat') }}">
+                        <div>      
+                            <label>Categorias</label>
+                            <select class="form-control" name="categories">
+                                <option value="">Escolha uma categoria</option>
+                                {% for genre in categories %}
+                                    <option value="{{genre.slug}}"><h1>{{ genre.nome_cat }}</h1></option>
+                                {% endfor %}
+                                <hr>
+                            </select>
+                        </div>
+                        <button type="submit" type="button" class="btn btn-primary btn-lg"> Pesquisar</button>
+                    </form>
         </div>
+                           
+        <div class="col-lg-10 flex-container">       
+                    {% for record in nome %}                  
+                    <a href="{{ detailsPage2|page({ (detailsUrlParameter2): attribute(record, detailsKeyColumn2) }) }}">
+                  <div class="thumbnail">
+                    <img src="{{ record.capa.thumb(150,170, {'mode':'crop'}) }}" alt="...">
+                    <div class="caption">
+                      <h3>{{ record.edicao }}</h3>
+                      <h4>{{ record.autor }}</h4>
+                    </div>
+                  </div>
+                  </a>
+                  {% endfor %}
+        </div>
+    </div>      
+ </div>
 
-
-        {% if nome.lastPage > 1 %}
-    <ul class="pagination">
-        {% if nome.currentPage > 1 %}
-            <li><a href="{{ this.page.baseFileName|page({ (pageParam): (nome.currentPage-1) }) }}">&larr; Prev</a></li>
-        {% endif %}
-
-        {% for page in 1..nome.lastPage %}
-            <li class="{{ nome.currentPage == page ? 'active' : null }}">
-                <a href="{{ this.page.baseFileName|page({ (pageParam): page }) }}">{{ page }}</a>
-            </li>
-        {% endfor %}
-
-        {% if nome.lastPage > nome.currentPage %}
-            <li><a href="{{ this.page.baseFileName|page({ (pageParam): (nome.currentPage+1) }) }}">Next &rarr;</a></li>
-        {% endif %}
-    </ul>
-{% endif %}
-      
-
-
-</div>
-</div>
 
 
