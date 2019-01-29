@@ -38,30 +38,4 @@ class Manga extends Model
             'otherKey' => 'categoria_id'
         ]
     ];
-
-    public function scopeListFrontEnd($query, $options = [])
-    {
-        extract(array_merge([
-            'page' => 1,
-            'perPage' => 10,
-            'sort' => 'created_at desc',
-            'categories' => null,
-            'year' => ''
-        ], $options));
-
-        if ($categories !== null) {
-            if (!is_array($categories)) {
-                $categories = [$categories];
-            }
-
-            foreach ($categories as $categoria) {
-                $query->whereHas('categories', function ($q) use ($categoria) {
-                    $q->where('id', '=', $categoria);
-                });
-            }
-        }
-
-
-        return $query->paginate($perPage, $page);
-    }
 }
