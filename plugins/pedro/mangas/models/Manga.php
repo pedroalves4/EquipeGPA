@@ -39,10 +39,8 @@ class Manga extends Model
         ]
     ];
 
-<<<<<<< HEAD
-=======
-    public function scopeListFrontEnd($query, $options = []){
-
+    public function scopeListFrontEnd($query, $options = [])
+    {
         extract(array_merge([
             'page' => 1,
             'perPage' => 10,
@@ -51,22 +49,19 @@ class Manga extends Model
             'year' => ''
         ], $options));
 
-        if($categories !== null) {
-
-            if(!is_array($categories)){
+        if ($categories !== null) {
+            if (!is_array($categories)) {
                 $categories = [$categories];
             }
 
-            foreach ($categories as $categoria){
-                $query->whereHas('categories', function($q) use ($categoria){
+            foreach ($categories as $categoria) {
+                $query->whereHas('categories', function ($q) use ($categoria) {
                     $q->where('id', '=', $categoria);
                 });
             }
-
         }
 
 
         return $query->paginate($perPage, $page);
     }
->>>>>>> Pedro
 }
