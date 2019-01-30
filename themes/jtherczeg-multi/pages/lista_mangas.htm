@@ -14,78 +14,8 @@ noRecordsMessage = "No records found"
 detailsPage = "mangas-single"
 detailsKeyColumn = "slug"
 detailsUrlParameter = "slug"
-recordsPerPage = 12
 pageNumber = "{{ :page }}"
 
 [siteSearchInclude]
 ==
-{% set nome = filtermanga.nome %}
-{% set categories = filtermanga.categories %}
-{% set detailsPage2 = builderList.detailsPage %}
-{% set detailsKeyColumn2 = builderList.detailsKeyColumn %}
-{% set detailsUrlParameter2 = builderList.detailsUrlParameter %}
-{% component 'searchInput' %}
-<div class="container-fluid pagina_produtos">
-
-        <div class="row">
-            
-            <div class="col-lg-3">
-                    <form action="{{ 'search' | page }}" method="get">
-                        <div class="input-group">          
-                                <input name="q" type="text" class="form-control" placeholder="Procurar por...">
-                                <span class="input-group-btn">
-                                  <button class="btn btn-primary" type="submit">Go!</button>
-                                </span>                               
-                        </div><!-- /input-group -->
-                    </form>
-            
-                    <form class="genre" method="GET" action="{{ url('lista_mangas') }}">
-                            <div>      
-                                <label>Categorias</label>
-                                <select class="form-control" name="categories">
-                                        <option value="">Escolha uma categoria</option>
-                                        {% for genre in categories %}
-                                            <option value="{{genre.slug}}"><h1>{{ genre.nome_cat }}</h1></option>
-                                        {% endfor %}
-                                        <hr>
-                                    </select>
-                                </div>
-                                <button type="submit" type="button" class="btn btn-primary btn-lg"> Pesquisar</button>
-                    </form>                
-            </div>
-
-                
-                                   
-                <div class="col-lg-9 flex-container">       
-                        {% for record in nome %}                  
-                        <a href="{{ detailsPage2|page({ (detailsUrlParameter2): attribute(record, detailsKeyColumn2) }) }}">
-                      <div class="thumbnail">
-                            <img src="{{ record.capa.thumb(150,170, {'mode':'crop'}) }}" alt="...">
-                            <div class="caption">
-                              <h3>{{ record.edicao }}</h3>
-                              <h4>{{ record.autor }}</h4>
-                            </div>
-                          </div>
-                          </a>
-                          {% endfor %}
-                </div>
-            </div>      
-         </div>
-
-         {% if nome.lastPage > 1 %}
-    <ul class="pagination">
-        {% if nome.currentPage > 1 %}
-            <li><a href="{{ this.page.baseFileName|page({ (pageParam): (nome.currentPage-1) }) }}">&larr; Prev</a></li>
-        {% endif %}
-
-        {% for page in 1..records.lastPage %}
-            <li class="{{ records.currentPage == page ? 'active' : null }}">
-                <a href="{{ this.page.baseFileName|page({ (pageParam): page }) }}">{{ page }}</a>
-            </li>
-        {% endfor %}
-
-        {% if nome.lastPage > nome.currentPage %}
-            <li><a href="{{ this.page.baseFileName|page({ (pageParam): (nome.currentPage+1) }) }}">Next &rarr;</a></li>
-        {% endif %}
-    </ul>
-{% endif %}
+{% component 'filtermanga' %}

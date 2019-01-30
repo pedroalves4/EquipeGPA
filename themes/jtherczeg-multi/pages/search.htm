@@ -7,7 +7,7 @@ is_hidden = 0
 resultsPerPage = 10
 showProviderBadge = 1
 noResultsMessage = "Your search returned no results."
-visitPageMessage = "Visit page"
+visitPageMessage = "Mais detalhes"
 ==
 <div class="container">
     <div class="row">
@@ -22,8 +22,9 @@ visitPageMessage = "Visit page"
     {# No results found #}
     {% partial searchResults ~ '::no-results.htm' %}
 {% endfor %}
-
+<div class="paginas-list-post"><
 {% partial searchResults ~ '::pagination.htm' results = results %}
+</div>
 </div>
 </div>
 </div>

@@ -16,4 +16,5 @@ class Mangas extends Controller
         parent::__construct();
         BackendMenu::setContext('Pedro.Mangas', 'main-menu-item');
     }
+
 }

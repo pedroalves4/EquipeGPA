@@ -4,13 +4,26 @@
 {% set detailsKeyColumn2 = builderList.detailsKeyColumn %}
 {% set detailsUrlParameter2 = builderList.detailsUrlParameter %}
 
+
+
+
+
 <div class="container-fluid pagina_produtos">
 
     <div class="row">
         
         <div class="col-lg-2">
+
+                <form action="{{ 'search' | page }}" method="get">
+                        <div class="input-group">          
+                                <input name="q" type="text" class="form-control" placeholder="Procurar por...">
+                                <span class="input-group-btn">
+                                  <button class="btn btn-primary" type="submit">Go!</button>
+                                </span>                               
+                        </div><!-- /input-group -->
+                    </form>
         
-                <form class="genre" method="GET" action="{{ url('manga_cat') }}">
+                <form class="genre" method="GET" action="{{ url('lista_mangas') }}">
                         <div>      
                             <label>Categorias</label>
                             <select class="form-control" name="categories">
@@ -27,19 +40,28 @@
                            
         <div class="col-lg-10 flex-container">       
                     {% for record in nome %}                  
-                    <a href="{{ detailsPage2|page({ (detailsUrlParameter2): attribute(record, detailsKeyColumn2) }) }}">
-                  <div class="thumbnail">
-                    <img src="{{ record.capa.thumb(150,170, {'mode':'crop'}) }}" alt="...">
-                    <div class="caption">
+                    
+                  <div class="thumbnaill">
+                        <a href="{{ detailsPage2|page({ (detailsUrlParameter2): attribute(record, detailsKeyColumn2) }) }}"><img src="{{ record.capa.thumb(100,auto, {'mode':'crop'}) }}" alt="..."></a>
+                  <div class="caption">
                       <h3>{{ record.edicao }}</h3>
                       <h4>{{ record.autor }}</h4>
-                    </div>
+                  </div>
+                  <div>
+                  <a href="{{ detailsPage2|page({ (detailsUrlParameter2): attribute(record, detailsKeyColumn2) }) }}"><button type="submit" class="btn btn-primary">Mais detalhes</button></a>
+                </div>
                   </div>
                   </a>
-                  {% endfor %}
-        </div>
+            {% endfor %}
+            
+
+        </div>         
     </div>      
  </div>
+
+ <div class="paginas-list-post">
+        {{ nome.render|raw }}
+</div>
 
 
 
