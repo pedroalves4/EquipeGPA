@@ -1,0 +1,21 @@
+title = "lista_mangas"
+url = "/lista_mangas/:page?"
+layout = "pagina_mangas"
+is_hidden = 0
+
+[filtermanga]
+
+[builderList]
+modelClass = "Pedro\Mangas\Models\Manga"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "edicao"
+noRecordsMessage = "No records found"
+detailsPage = "mangas-single"
+detailsKeyColumn = "slug"
+detailsUrlParameter = "slug"
+pageNumber = "{{ :page }}"
+
+[siteSearchInclude]
+==
+{% component 'filtermanga' %}
