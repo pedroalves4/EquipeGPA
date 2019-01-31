@@ -14,19 +14,6 @@ use Request;
 class FilterManga extends ComponentBase
 {
 
-    /**
-     * Parameter to use for the page number
-     * @var string
-     */
-    public $pageParam;
-
-    protected function prepareVars()
-    {
-        
-        $this->pageParam = $this->page['pageParam'] = $this->paramName('pageNumber');
-
-    }
-
 
     public function componentDetails(){
         return [

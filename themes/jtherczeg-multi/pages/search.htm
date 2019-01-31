@@ -8,9 +8,68 @@ resultsPerPage = 10
 showProviderBadge = 1
 noResultsMessage = "Your search returned no results."
 visitPageMessage = "Mais detalhes"
+
+[filtermanga]
 ==
-<div class="container">
+{% set records = builderList.records %}
+{% set displayColumn = builderList.displayColumn %}
+{% set noRecordsMessage = builderList.noRecordsMessage %}
+{% set detailsPage = builderList.detailsPage %}
+{% set detailsKeyColumn = builderList.detailsKeyColumn %}
+{% set detailsUrlParameter = builderList.detailsUrlParameter %}
+
+
+{% set nome = filtermanga.nome %}
+{% set categories = filtermanga.categories %}
+{% set detailsPage2 = builderList.detailsPage %}
+{% set detailsKeyColumn2 = builderList.detailsKeyColumn %}
+{% set detailsUrlParameter2 = builderList.detailsUrlParameter %}
+
+
+
+
+
+<div class="container-fluid pagina_produtos">
+
     <div class="row">
+        
+        <div class="col-lg-2">
+
+               
+        </div>
+                               
+ </div>
+
+
+
+<div class="container-fluid pagina_produtos">
+    <div class="row">
+
+        <div class="col-lg-2">
+                <form action="{{ 'search' | page }}" method="get">
+                        <div class="input-group">          
+                                <input name="q" type="text" class="form-control" placeholder="Procurar por...">
+                                <span class="input-group-btn">
+                                  <button class="btn btn-primary" type="submit">Go!</button>
+                                </span>                               
+                        </div><!-- /input-group -->
+                    </form>
+        
+                <form class="genre" method="GET" action="{{ url('mangas') }}">
+                        <div>      
+                            <label>Categorias</label>
+                            <select class="form-control" name="categories">
+                                <option value="">Escolha uma categoria</option>
+                                {% for genre in categories %}
+                                    <option value="{{genre.slug}}"><h1>{{ genre.nome_cat }}</h1></option>
+                                {% endfor %}
+                                <hr>
+                            </select>
+                        </div>
+                        <button type="submit" type="button" class="btn btn-primary btn-lg"> Pesquisar</button>
+                    </form>
+
+        </div>
         <div class="col flex-container">
             
 {% set results = searchResults.results %}
@@ -22,9 +81,9 @@ visitPageMessage = "Mais detalhes"
     {# No results found #}
     {% partial searchResults ~ '::no-results.htm' %}
 {% endfor %}
-<div class="paginas-list-post"><
+</div>
+</div>
+</div>
+<div class="paginas-list-post">
 {% partial searchResults ~ '::pagination.htm' results = results %}
-</div>
-</div>
-</div>
 </div>

@@ -23,7 +23,7 @@
                         </div><!-- /input-group -->
                     </form>
         
-                <form class="genre" method="GET" action="{{ url('lista_mangas') }}">
+                <form class="genre" method="GET" action="{{ url('mangas') }}">
                         <div>      
                             <label>Categorias</label>
                             <select class="form-control" name="categories">
@@ -42,7 +42,7 @@
                     {% for record in nome %}                  
                     
                   <div class="thumbnaill">
-                        <a href="{{ detailsPage2|page({ (detailsUrlParameter2): attribute(record, detailsKeyColumn2) }) }}"><img src="{{ record.capa.thumb(100,auto, {'mode':'crop'}) }}" alt="..."></a>
+                        <a href="{{ detailsPage2|page({ (detailsUrlParameter2): attribute(record, detailsKeyColumn2) }) }}"><img src="{{ record.capa.thumb(100,160, {'mode':'crop'}) }}" alt="..."></a>
                   <div class="caption">
                       <h3>{{ record.edicao }}</h3>
                       <h4>{{ record.autor }}</h4>
