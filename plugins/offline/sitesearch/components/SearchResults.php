@@ -105,7 +105,7 @@ class SearchResults extends BaseComponent
                 'title'             => 'offline.sitesearch::lang.searchResults.properties.visit_page.title',
                 'description'       => 'offline.sitesearch::lang.searchResults.properties.visit_page.description',
                 'type'              => 'string',
-                'default'           => 'Visit page',
+                'default'           => 'Mais detalhes',
                 'showExternalParam' => false,
             ]
         ];

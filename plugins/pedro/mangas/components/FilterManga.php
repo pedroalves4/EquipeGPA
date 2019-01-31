@@ -3,29 +3,49 @@
 
 use Lang;
 use Cms\Classes\ComponentBase;
+use Cms\Classes\Page;
 use Input;
 use Pedro\Mangas\Models\Manga;
 use Pedro\Mangas\Models\Categoria;
+use DomainException;
+use Illuminate\Pagination\Paginator;
+use Request;
 
 class FilterManga extends ComponentBase
 {
+
+    /**
+     * Parameter to use for the page number
+     * @var string
+     */
+    public $pageParam;
+
+    protected function prepareVars()
+    {
+        
+        $this->pageParam = $this->page['pageParam'] = $this->paramName('pageNumber');
+
+    }
+
+
     public function componentDetails(){
         return [
             'name' => 'Filter Mangas',
             'description' => 'Filter Mangas'
         ];
     }
-
+ 
     public function onRun() {
         //$this->nome = $this->filterMangas();
         $this->nome = $this->page['nome'] = $this->filterMangas();
         $this->categories = Categoria::all();
         
     }
-
+    
     protected function filterMangas() {
         $categories = Input::get('categories');
-        $query = Manga::all();
+        $query = Manga::paginate(10);
+        //$query = Manga::all();
 
         if($categories){
             $query = Manga::whereHas('categories', function($filter) use ($categories){
@@ -33,29 +53,11 @@ class FilterManga extends ComponentBase
             })->get();
         }
 
+        
 
         return $query;
     }
 
-    protected function paginate($model)
-    {
-        $recordsPerPage = trim($this->property('recordsPerPage'));
-        if (!strlen($recordsPerPage)) {
-            // Pagination is disabled - return all records
-            return $model->get();
-        }
-
-        if (!preg_match('/^[0-9]+$/', $recordsPerPage)) {
-            throw new SystemException('Invalid records per page value.');
-        }
-
-        $pageNumber = trim($this->property('pageNumber'));
-        if (!strlen($pageNumber) || !preg_match('/^[0-9]+$/', $pageNumber)) {
-            $pageNumber = 1;
-        }
-
-        return $model->paginate($recordsPerPage, $pageNumber);
-    }
    
     public $nome;
     public $categories;
