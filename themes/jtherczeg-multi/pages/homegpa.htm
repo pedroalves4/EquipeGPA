@@ -17,10 +17,14 @@ pageNumber = "{{ :page }}"
     {% partial "slide-gpa" %}
 </section><!--/#main-slider-->
 
-<div class="section-header">
+<div class="section-header" id="about">
 
-	<h2 class="section-title text-center wow fadeInDown"> GPA MANGÁ</h2><br>
 	     
-	<p class="textoGPA"> {{ records[0].texto }} </p><br><br>
+       {% partial "about" %}
+</div>
 
+<div  id="contact">
+
+	     
+	{% partial "contact" %}
 </div>
