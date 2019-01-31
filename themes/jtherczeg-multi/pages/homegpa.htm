@@ -2,8 +2,17 @@ title = "Homegpa"
 url = "/home"
 layout = "GPA-MANGA"
 is_hidden = 0
-==
 
+[builderList]
+modelClass = "CodeJr\Edicao\Models\Quem"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "texto"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+==
 <section id="main-slider">
     {% partial "slide-gpa" %}
 </section><!--/#main-slider-->
@@ -12,8 +21,6 @@ is_hidden = 0
 
 	<h2 class="section-title text-center wow fadeInDown"> GPA MANGÁ</h2><br>
 	     
-	<p class="textoGPA">Existe uma infinidade de obras quando o assunto é mangá, mas a GPA encarou a missão de desvendar esse universo!<br>
-	Temos orgulho de oferecer informações de qualidade ao nosso público, seja através de nosso repositório ou postagens no blog.<br>
-	Aqui você encontra mangás que inserem os leitores em uma nova realidade, desde de muita aventura e batalhas épicas à um romance ou histórias de comédia.</p><br><br>
+	<p class="textoGPA"> {{ records[0].texto }} </p><br><br>
 
-</div>	
+</div>
