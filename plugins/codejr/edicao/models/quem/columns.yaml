@@ -1,5 +1,0 @@
-columns:
-    texto:
-        label: Texto
-        type: text
-        searchable: false

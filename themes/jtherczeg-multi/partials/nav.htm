@@ -12,11 +12,11 @@
 				
                 <div class="collapse navbar-collapse navbar-right">
                     <ul class="nav navbar-nav">
-                        <li class="scroll active"><a href="/home#main-slider">Home</a></li>
-                        <li class="scroll"><a href="/home#about">Quem Somos</a></li>
-                        <li class="scroll"><a href="mangas">Mangas</a></li>
-                        <li class="scroll"><a href="#blog">Blog</a></li> 
-                        <li class="scroll"><a href="/home#contact">Contact</a></li>
+                        <li class="scroll {% if this.page.id== 'homegpa' %} active {% endif %}"><a href="/#main-slider">Home</a></li>
+                        <li class="scroll {% if this.page.id== 'homegpa#about' %} active {% endif %}"><a href="#about">Quem Somos</a></li>
+                        <li class="scroll {% if this.page.id== 'mangas' %} active {% endif %}"><a href="mangas">Mangas</a></li>
+                        <li class="scroll"><a href="/#blog">Blog</a></li> 
+                        <li class="scroll"><a href="/#contact">Contact</a></li>
                         
                         <li class="{% if this.page.id== 'login' %} active {% endif %}"><a href="{{'login'|page}}">
                         

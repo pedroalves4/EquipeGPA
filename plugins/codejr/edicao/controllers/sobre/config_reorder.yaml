@@ -1,4 +1,0 @@
-title: Sobre
-modelClass: CodeJr\Edicao\Models\Quem
-toolbar:
-    buttons: reorder_toolbar
