@@ -276,3 +276,9 @@
 .map-gpa{
 	margin-bottom: -2px;
 }	
+
+/*Fundo*/
+.imagem-fundo img{
+  height: 650px;
+  width: 100%;
+}
