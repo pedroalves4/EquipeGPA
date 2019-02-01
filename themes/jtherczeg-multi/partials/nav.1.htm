@@ -1,0 +1,50 @@
+        <nav id="main-menu" class="navbar navbar-default navbar-fixed-top" role="banner">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#home"><img src="{{ 'assets/images/GPA.png'|theme }}" style="max-width: 15vh;" alt="logo"></a>
+                </div>
+				
+                <div class="collapse navbar-collapse navbar-right">
+                    <ul class="nav navbar-nav">
+                        <li class="scroll active"><a href="/home#main-slider">Home</a></li>
+                        <li class="scroll"><a href="{{'home#about'|page}}">Quem Somos</a></li>
+                        <li class="scroll"><a href="mangas">Mangas</a></li>
+                        <li class="scroll"><a href="/home#blog">Blog</a></li> 
+                        <li class="scroll"><a href="/home#contact">Contact</a></li>
+                        
+                        <li class="{% if this.page.id== 'login' %} active {% endif %}"><a href="{{'login'|page}}">
+                        
+                            {% if not user %}
+
+                                Login
+
+                            {% else %}
+
+                                Meu Perfil
+
+                            {% endif %}
+
+                        </a></li>
+
+                        {% if user %}
+
+                          <li class="{% if this.page.id== 'registrar-usuario' %} active {% endif %}"><a href="{{'registrar-usuario'|page}}">Registrar Usuário</a></li>
+
+                          <li class="{% if this.page.id== 'add-categoria' %} active {% endif %}"><a href="{{'add-categoria'|page}}">Add Categoria</a></li>
+
+                          <li class="{% if this.page.id== 'add-mangas' %} active {% endif %}"><a href="{{'add-manga'|page}}">Add Mangás</a></li>
+
+                          <li><a data-request="onLogout" data-request-data="redirect: '/home'">Sign out</a></li> 
+
+                        {% endif %}
+
+                    </ul>
+                </div>
+            </div><!--/.container-->
+        </nav><!--/nav-->
